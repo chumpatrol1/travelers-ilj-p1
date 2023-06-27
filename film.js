@@ -53,11 +53,12 @@ async function fetchPlanets(film) {
 }
 
 const renderFilm = film => {
-  document.title = `SWAPI - ${film?.name}`;  // Just to make the browser tab say their name
-  nameH1.textContent = film?.name;
-  heightSpan.textContent = film?.diameter;
-  massSpan.textContent = film?.population;
-  birthYearSpan.textContent = film?.orbital_period;
+  document.title = `SWAPI - ${film?.title}`;  // Just to make the browser tab say their name
+  nameH1.textContent = film?.title;
+  nameH1.innerHTML = film?.title;
+  heightSpan.textContent = film?.title;
+  massSpan.textContent = film?.director;
+  birthYearSpan.textContent = film?.episode_id;
   //homeworldSpan.innerHTML = `<a href="/planet.html?id=${character?.homeworld.id}">${character?.homeworld.name}</a>`;
   const charsLis = film?.characters?.map(chara => `<li><a href="/character.html?id=${chara.id}">${chara.name}</li>`)
   charactersUl.innerHTML = charsLis.join("");
