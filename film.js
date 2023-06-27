@@ -56,7 +56,7 @@ const renderFilm = film => {
   document.title = `SWAPI - ${film?.title}`;  // Just to make the browser tab say their name
   nameH1.textContent = film?.title;
   nameH1.innerHTML = film?.title;
-  heightSpan.textContent = film?.title;
+  heightSpan.textContent = film?.release_date;
   massSpan.textContent = film?.director;
   birthYearSpan.textContent = film?.episode_id;
   //homeworldSpan.innerHTML = `<a href="/planet.html?id=${character?.homeworld.id}">${character?.homeworld.name}</a>`;
