@@ -16,17 +16,22 @@ addEventListener('DOMContentLoaded', () => {
   filmsUl = document.querySelector('#planets>ul');
   const sp = new URLSearchParams(window.location.search)
   const id = sp.get('id')
-  film = getFilm(id);
-  renderFilm(film);
+  getFilm(id);
+  
 
 });
 
-async function getFilm(id){
+async function fetchFilm(id){
     const url = `${baseUrl}/films/${id}`;
     const films = await fetch(url)
       .then(res => res.json())
-    console.log(films)
+    //console.log(films)
     return films;
+}
+
+async function getFilm(id){
+    var film = await fetchFilm(id);
+    renderFilm(film);
 }
 async function getCharacter(id) {
   let character;
@@ -75,16 +80,12 @@ const renderCharacter = character => {
 
 const renderFilm = film => {
   document.title = `SWAPI - ${film?.title}`;  // Just to make the browser tab say their name
-  console.log("title");
-  console.log(film?.title);
+  console.log(film);
   nameH1.textContent = film?.title;
-  nameH1.innerHTML = film?.title;
+  nameH1.innerHTML = film.title;
+  heightSpan.textContent = film?.release_date;
+  massSpan.textContent = film?.director;
+  birthYearSpan.textContent = film?.episode_id;
   
   
-  //heightSpan.textContent = character?.height;
-  //massSpan.textContent = character?.mass;
-  //birthYearSpan.textContent = character?.birth_year;
-  //homeworldSpan.innerHTML = `<a href="/planet.html?id=${character?.homeworld.id}">${character?.homeworld.name}</a>`;
-  //const filmsLis = character?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
-  //filmsUl.innerHTML = filmsLis.join("");
 }
